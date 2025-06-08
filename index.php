@@ -6,6 +6,8 @@ $url = isset($_GET['url']) ? rtrim($_GET['url'], '/') : '';
 $routes = [
     '' => 'pages/home.php',          // Home route
     'blog' => 'pages/blog.php',          // Blog page route
+    'blog-info' => 'pages/blog-info.php', // Blog info page route
+    'shows' => 'pages/shows.php',          // Shows page route
 
 
 

@@ -1,14 +1,74 @@
+<footer class="tracking-wide bg-[#1e2d3b] pt-12 pb-4 px-10">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-screen-xl mx-auto">
+        <div>
+          <h4 class="text-[#ffffff] font-medium text-sm mb-6">About Us</h4>
+          <ul class="space-y-4">
+            <li>
+              <a href="javascript:void(0)" class="hover:text-[#FFA726] text-gray-400 text-sm font-normal transition-all">Our Story</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" class="hover:text-[#FFA726] text-gray-400 text-sm font-normal transition-all">Meet the Team</a>
+            </li>
+          </ul>
+        </div>
 
-<footer class="bg-gray-900 pt-12 pb-6 px-10 font-[sans-serif] tracking-wide">
-      <div class="max-w-screen-xl mx-auto">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div class="lg:flex lg:items-center">
-            <a href="javascript:void(0)">
-              <img src="https://readymadeui.com/readymadeui-light.svg" alt="logo" class="w-48" />
-            </a>
-          </div>
+        <div>
+          <h4 class="text-[#ffffff] font-medium text-sm mb-6">Quick Links</h4>
+          <ul class="space-y-4">
+            <li>
+              <a href="javascript:void(0)" class="hover:text-[#FFA726] text-gray-400 text-sm font-normal transition-all">Shows</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" class="hover:text-[#FFA726] text-gray-400 text-sm font-normal transition-all">Blog</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" class="hover:text-[#FFA726] text-gray-400 text-sm font-normal transition-all">Reviews</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" class="hover:text-[#FFA726] text-gray-400 text-sm font-normal transition-all">Contact</a>
+            </li>
+          </ul>
+        </div>
 
-          <div class="lg:flex lg:items-center">
+        <div>
+          <h4 class="text-[#ffffff] font-medium text-sm mb-6">Contact Us</h4>
+          <ul class="space-y-4">
+            <li>
+              <a href="javascript:void(0)" class="hover:text-[#FFA726] text-gray-400 text-sm font-normal transition-all">123 Theatre Street, City of Glasgow</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" class="hover:text-[#FFA726] text-gray-400 text-sm font-normal transition-all">0141 423 3232</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" class="hover:text-[#FFA726] text-gray-400 text-sm font-normal transition-all">info@localtheatre</a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-[#ffffff] font-medium text-sm mb-6">FAQs</h4>
+          <ul class="space-y-4">
+            <li>
+              <a href="javascript:void(0)" class="hover:text-[#FFA726] text-gray-400 text-sm font-normal transition-all">Booking Info</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" class="hover:text-[#FFA726] text-gray-400 text-sm font-normal transition-all">Age Restriction</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" class="hover:text-[#FFA726] text-gray-400 text-sm font-normal transition-all">Refund Policy</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" class="hover:text-[#FFA726] text-gray-400 text-sm font-normal transition-all">Accessibility</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border-t text-center border-[#6b5f5f] pt-4 mt-8">
+        <p class="text-gray-400 text-sm">
+          The Local Theatre 2025, Celebrating the Artt of Performance.
+        </p>
+        <div class="lg:flex lg:items-center">
             <ul class="flex space-x-6">
               <li>
                 <a href="javascript:void(0)">
@@ -39,47 +99,7 @@
               </li>
             </ul>
           </div>
-
-          <div>
-            <h4 class="text-lg mb-6 text-white">Useful links</h4>
-            <ul class="space-y-4 pl-2">
-              <li>
-                <a href="javascript:void(0)" class="text-gray-300 hover:text-white text-sm">Featured</a>
-              </li>
-              <li>
-                <a href="javascript:void(0)" class="text-gray-300 hover:text-white text-sm">New Arrivals</a>
-              </li>
-              <li>
-                <a href="javascript:void(0)" class="text-gray-300 hover:text-white text-sm">New Arrivals</a>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 class="text-lg mb-6 text-white">Information</h4>
-            <ul class="space-y-4 pl-2">
-              <li>
-                <a href="javascript:void(0)" class="text-gray-300 hover:text-white text-sm">About Us</a>
-              </li>
-              <li>
-                <a href="javascript:void(0)" class="text-gray-300 hover:text-white text-sm">Terms &amp; Conditions</a>
-              </li>
-              <li>
-                <a href="javascript:void(0)" class="text-gray-300 hover:text-white text-sm">Privacy Policy</a>
-              </li>
-              <li>
-                <a href="javascript:void(0)" class="text-gray-300 hover:text-white text-sm">Sale</a>
-              </li>
-              <li>
-                <a href="javascript:void(0)" class="text-gray-300 hover:text-white text-sm">Documentation</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <p class='text-gray-300 text-sm mt-10'>© ReadymadeUI. All rights reserved.
-        </p>
       </div>
     </footer>
-</body>
-</html>
+
+    
