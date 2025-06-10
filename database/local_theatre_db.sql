@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 31, 2025 at 03:27 PM
+-- Generation Time: Jun 10, 2025 at 11:03 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -32,16 +32,10 @@ CREATE TABLE `blogs` (
   `blog_title` varchar(255) NOT NULL,
   `blog_content` text NOT NULL,
   `blog_author` int(11) NOT NULL,
-  `blog_created` timestamp NOT NULL DEFAULT current_timestamp()
+  `image_url` varchar(255) DEFAULT NULL,
+  `blog_created` timestamp NOT NULL DEFAULT current_timestamp(),
+  `status` enum('pending','published','rejected') NOT NULL DEFAULT 'pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `blogs`
---
-
-INSERT INTO `blogs` (`blog_id`, `blog_title`, `blog_content`, `blog_author`, `blog_created`) VALUES
-(1, 'Theatre Revival', 'A discussion on theatre trends.', 1, '2025-03-20 12:54:59'),
-(2, 'Movie Evolution', 'How films have changed over the years.', 2, '2025-03-20 12:54:59');
 
 -- --------------------------------------------------------
 
@@ -54,16 +48,9 @@ CREATE TABLE `comments` (
   `comment_text` text NOT NULL,
   `comment_created` timestamp NOT NULL DEFAULT current_timestamp(),
   `user_id` int(11) NOT NULL,
-  `blog_id` int(11) NOT NULL
+  `blog_id` int(11) NOT NULL,
+  `status` enum('approved','rejected','pending') NOT NULL DEFAULT 'pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `comments`
---
-
-INSERT INTO `comments` (`comment_id`, `comment_text`, `comment_created`, `user_id`, `blog_id`) VALUES
-(1, 'Great insights!', '2025-03-20 12:54:59', 1, 1),
-(2, 'Interesting read.', '2025-03-20 12:54:59', 2, 2);
 
 -- --------------------------------------------------------
 
@@ -78,14 +65,6 @@ CREATE TABLE `news` (
   `news_added_by` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `news`
---
-
-INSERT INTO `news` (`news_id`, `news_title`, `created_on`, `news_added_by`) VALUES
-(1, 'New Theatre Opens', '2025-03-20 12:54:59', 1),
-(2, 'Movie Industry Update', '2025-03-20 12:54:59', 2);
-
 -- --------------------------------------------------------
 
 --
@@ -99,14 +78,6 @@ CREATE TABLE `reviews` (
   `user_id` int(11) NOT NULL,
   `show_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `reviews`
---
-
-INSERT INTO `reviews` (`review_id`, `review_text`, `created_at`, `user_id`, `show_id`) VALUES
-(1, 'Amazing show!', '2025-03-20 12:54:59', 1, 1),
-(2, 'Loved the visuals!', '2025-03-20 12:54:59', 2, 2);
 
 -- --------------------------------------------------------
 
@@ -140,16 +111,19 @@ CREATE TABLE `users` (
   `username` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `role` varchar(5) NOT NULL DEFAULT 'user'
+  `role` enum('user','admin') NOT NULL DEFAULT 'user',
+  `created_on` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `username`, `email`, `password`, `role`) VALUES
-(1, 'JohnDoe', 'john@example.com', 'password123', 'user'),
-(2, 'JaneSmith', 'jane@example.com', 'password456', 'user');
+INSERT INTO `users` (`user_id`, `username`, `email`, `password`, `role`, `created_on`) VALUES
+(5, 'Kafeel', 'kafeel@email.com', '$2y$10$nOUIs5kJ7naTuTFkBy1veuEvZx5aZpOHmCa87np2uXn3/j5Aq8cWm', 'admin', '2025-02-11 10:00:00'),
+(6, 'Azim', 'azim@email.com', '$2y$10$1AjS1UkogZEiW1Y9c.iqL.H.CqI5ufYXraLBFhcflRJ1gMVf3yzpe', 'user', '2025-02-11 10:10:00'),
+(7, 'kafeel123', 'kafeel_a_01@hotmail.com', '$2y$10$qNWhmk29.vAmwdCimNhQ5ua/UVWOBjO/HIBZCYNxsyobP.VVH4YDq', 'admin', '2025-06-09 19:07:46'),
+(8, 'kafeel125', 'kahmed369@googlemail.com', '$2y$10$1OCnU9eognJbbHAlKnXLd.k4eLY5Ng4uCzC8MzQnmfpAX4sTHnE/G', 'admin', '2025-06-09 19:11:22');
 
 --
 -- Indexes for dumped tables
@@ -236,7 +210,7 @@ ALTER TABLE `shows`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables

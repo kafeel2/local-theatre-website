@@ -17,12 +17,20 @@ $routes = [
 
     // admin dashboard routes
     'admin/dashboard' => 'pages/admin/dashboard.php', // Admin dashboard route
-    'user' => 'pages/user/dashboard.php',   // User dashboard route
     'user/dashboard' => 'pages/user/dashboard.php', // User dashboard route
+    'admin/comments' => 'pages/admin/comments.php', // Admin comments route
+    'admin/manage-blogs' => 'pages/admin/manage-blogs.php', // Admin manage blogs route
+    'admin/edit-blog' => 'pages/admin/edit-blog.php', // Admin edit blog route
+    'admin/delete-blog' => 'pages/admin/delete-blog.php', // Admin delete blog route
+    'admin/users' => 'pages/admin/users.php', // Admin users route
+
+
+
     // // configuration
     'registerController' => 'controller/registerController.php', // Register controller
     'loginController' => 'controller/loginController.php',     // Login controller
     'logout' => 'controller/logoutController.php',             // Logout controller
+    'commentsController' => 'controller/commentsController.php', // Comments controller
 
 
 

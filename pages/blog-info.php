@@ -9,14 +9,15 @@ $blog = $conn->prepare("SELECT
 b.blog_title,
 b.blog_content,
 b.image_url,
-u.username
+u.username,
+u.user_id
 
 from blogs b
-INNER JOIN users u ON b.blog_author = u.id  
+INNER JOIN users u ON b.blog_author = u.user_id  
 where b.blog_id =$blogId ");
 $blog->execute();
 $blog->store_result();
-$blog->bind_result($blog_title, $blog_content, $image_url, $username);
+$blog->bind_result($blog_title, $blog_content, $image_url, $username, $user_id);
 $blog->fetch();
 ?>
 
@@ -26,7 +27,7 @@ $blog->fetch();
         <h1 class="text-3xl font-semibold text-gray-800 capitalize lg:text-4xl dark:text-white">From the blog</h1>
 
         <div class="mt-8 lg:-mx-6 lg:flex lg:items-center">
-        <img src="<?= ROOT_DIR ?>assets/images/<?php echo htmlspecialchars($image_url); ?>" alt="<?php echo htmlspecialchars($blog_title); ?>" class="object-cover" />
+        <img src="<?= ROOT_DIR ?>assets/<?php echo htmlspecialchars($image_url); ?>" alt="<?php echo htmlspecialchars($blog_title); ?>" class="object-cover" />
             <div class="mt-6 lg:w-1/2 lg:mt-0 lg:mx-6 ">
                 
 
@@ -43,13 +44,26 @@ $blog->fetch();
 
                     <div class="mx-4">
                         <h1 class="text-sm text-gray-700 dark:text-gray-200"><?php echo htmlspecialchars($username); ?></h1>
-                        
                     </div>
                 </div>
+                <?php if(isset($_SESSION['user_id'])) : ?>
+                <div class="mt-20">
+                <form id="commentForm" action="commentsController?bid=<?= $blogId ?>&uid=<?=$user_id?>" method="post">
+                <label for="comment" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Comment on <?= $blog_title ?></label>
+                    <textarea id="comment" name="comment_text" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Your comment..."></textarea>
+                    <button type="submit" class="relative inline cursor-pointer text-xl font-medium before:bg-violet-600  before:absolute before:-bottom-1 before:block before:h-[2px] before:w-full before:origin-bottom-right before:scale-x-0 before:transition before:duration-300 before:ease-in-out hover:before:origin-bottom-left hover:before:scale-x-100">Submit Comment</button>
+                    <p class="mt-5">Your comment will appear once approved by admin</p>
+                </form>
+                <?php else : ?>
+                    <p>Please sign in to comment on this blog</p>
+                </div>
+                <?php endif ?>          
             </div>
         </div>
     </div>
 </section>
+
+
 
 
 <?php

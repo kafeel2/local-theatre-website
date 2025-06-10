@@ -1,5 +1,5 @@
 <?php
-define('ROOT_DIR', '/theatre/');
+define('ROOT_DIR', '/local-theatre-website/');
 session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -18,7 +18,7 @@ ini_set('display_errors', 1);
 
     <header class="flex [box-shadow:rgba(0,0,0,0.1)_-4px_9px_25px_-6px] py-4 px-4 sm:px-10 bg-white min-h-[75px] tracking-wide relative z-50">
       <div class="flex flex-wrap items-center gap-4 w-full">
-        <img src="/theatre/assets/logo.png" alt="logo" class="w-16">
+        <img src="<?= ROOT_DIR?>/assets/logo.png" alt="logo" class="w-16">
 
         <div id="collapseMenu"
           class="lg:ml-12 max-lg:hidden lg:!block max-lg:before:fixed max-lg:before:bg-black max-lg:before:opacity-40 max-lg:before:inset-0 max-lg:before:z-50">
@@ -36,7 +36,7 @@ ini_set('display_errors', 1);
           <ul
             class="lg:flex lg:gap-x-4 max-lg:space-y-3 max-lg:fixed max-lg:bg-white max-lg:w-2/3 max-lg:min-w-[300px] max-lg:top-0 max-lg:left-0 max-lg:p-4 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50">
             <li class="max-lg:border-b max-lg:border-gray-300 max-lg:pb-4 px-3 lg:hidden">
-              <a href="javascript:void(0)"><img src="/theatre/assets/logo.png" alt="logo" class="w-16">
+              <a href="javascript:void(0)"><img src="<?= ROOT_DIR?>/assets/logo.png" alt="logo" class="w-16">
 
 
               </a>

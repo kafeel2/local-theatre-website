@@ -11,7 +11,7 @@ if (empty($_POST['email']) || empty($_POST['password'])) {
 }
 
 // Prepare an SQL statement to prevent SQL injection when checking user credentials.
-if ($stmt = $conn->prepare('SELECT user_id, password, role FROM users WHERE email = ?')) {
+if ($stmt = $conn->prepare('SELECT user_id, password, username, role FROM users WHERE email = ?')) {
     // Bind the input email parameter to the SQL query and execute the statement.
     $stmt->bind_param('s', $_POST['email']);
     $stmt->execute();
@@ -19,7 +19,7 @@ if ($stmt = $conn->prepare('SELECT user_id, password, role FROM users WHERE emai
 
     // If email exists, bind the result to the variables and fetch data.
     if ($stmt->num_rows > 0) {
-        $stmt->bind_result($user_id, $password, $role);
+        $stmt->bind_result($user_id, $password, $username, $role);
         $stmt->fetch();
 
         // Verify the password against the hashed password stored in the database.
@@ -30,6 +30,7 @@ if ($stmt = $conn->prepare('SELECT user_id, password, role FROM users WHERE emai
             $_SESSION['email'] = $_POST['email'];
             $_SESSION['user_id'] = $user_id;
             $_SESSION['role'] = $role;
+            $_SESSION['username'] = $username;
 
             // Set secure cookie with email (Only use Secure flag if on HTTPS)
             setcookie("email", $_POST['email'], time() + 86400, "/", "", false, true);
