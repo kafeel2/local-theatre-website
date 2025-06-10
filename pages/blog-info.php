@@ -6,17 +6,17 @@ echo $blogId;
 
 
 $blog = $conn->prepare("SELECT
-b.title,
-b.content,
-b.image,
+b.blog_title,
+b.blog_content,
+b.image_url,
 u.username
 
 from blogs b
-INNER JOIN users u ON b.user_id = u.id
-where b.id =$blogId ");
+INNER JOIN users u ON b.blog_author = u.id  
+where b.blog_id =$blogId ");
 $blog->execute();
 $blog->store_result();
-$blog->bind_result($title, $content, $image, $username);
+$blog->bind_result($blog_title, $blog_content, $image_url, $username);
 $blog->fetch();
 ?>
 
@@ -26,16 +26,16 @@ $blog->fetch();
         <h1 class="text-3xl font-semibold text-gray-800 capitalize lg:text-4xl dark:text-white">From the blog</h1>
 
         <div class="mt-8 lg:-mx-6 lg:flex lg:items-center">
-        <img src="<?= ROOT_DIR ?>assets/images/<?php echo htmlspecialchars($image); ?>" alt="<?php echo htmlspecialchars($title); ?>" class="object-cover" />
+        <img src="<?= ROOT_DIR ?>assets/images/<?php echo htmlspecialchars($image_url); ?>" alt="<?php echo htmlspecialchars($blog_title); ?>" class="object-cover" />
             <div class="mt-6 lg:w-1/2 lg:mt-0 lg:mx-6 ">
                 
 
                 <a href="#" class="block mt-4 text-2xl font-semibold text-gray-800 hover:underline dark:text-white md:text-3xl">
-                <?php echo htmlspecialchars($title); ?>
+                <?php echo htmlspecialchars($blog_title); ?>
                 </a>
 
                 <p class="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm">
-                <?php echo htmlspecialchars($content); ?>
+                <?php echo htmlspecialchars($blog_content); ?>
                 </p>
 
                 <div class="flex items-center mt-6">

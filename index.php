@@ -5,15 +5,27 @@ $url = isset($_GET['url']) ? rtrim($_GET['url'], '/') : '';
 // Define available routes (URL => corresponding PHP file)
 $routes = [
     '' => 'pages/home.php',          // Home route
+    'home' => 'pages/home.php',      // Home page route
+    'contact' => 'pages/contact.php', // Contact page route
+    'about' => 'pages/about.php',     // About page route
+    'register' => 'pages/register.php', // Register page route
+    'login' => 'pages/login.php',     // Login page route
     'blog' => 'pages/blog.php',          // Blog page route
     'blog-info' => 'pages/blog-info.php', // Blog info page route
     'shows' => 'pages/shows.php',          // Shows page route
 
 
+    // admin dashboard routes
+    'admin/dashboard' => 'pages/admin/dashboard.php', // Admin dashboard route
+    'user' => 'pages/user/dashboard.php',   // User dashboard route
+    'user/dashboard' => 'pages/user/dashboard.php', // User dashboard route
+    // // configuration
+    'registerController' => 'controller/registerController.php', // Register controller
+    'loginController' => 'controller/loginController.php',     // Login controller
+    'logout' => 'controller/logoutController.php',             // Logout controller
 
 
 
-    
     // 'home' => 'pages/home.php', 
     // 'contact' => 'pages/contact.php',          // contact route
     // 'about' => 'pages/about.php',
