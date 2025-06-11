@@ -1,7 +1,6 @@
 <?php
 // Include database configuration and header
 include 'database/config.php';
-include 'components/header.php';
 
 // Prepare the SQL query to fetch comments along with blog and user data
 $comments = $conn->prepare("SELECT
@@ -13,8 +12,8 @@ u.username,
 b.blog_title,
 b.image_url
 FROM comments c
-INNER JOIN users u ON c.user_id = u.id
-INNER JOIN blogs b ON c.blog_id = b.id
+INNER JOIN users u ON c.user_id = u.user_id
+INNER JOIN blogs b ON c.blog_id = b.blog_id
 ORDER BY 
     CASE 
         WHEN c.status = 'pending' THEN 1 
@@ -102,5 +101,4 @@ $comments->bind_result($commentId, $comment, $created, $commentStatus, $username
 
 <?php
 // Include the footer
-include 'components/footer.php';
 ?>

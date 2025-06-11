@@ -16,14 +16,18 @@ include 'components/header.php';
 </style>
 
 <!-- Register Page Layout -->
-<div class="min-w-screen min-h-screen bg-gray-900 flex items-center justify-center px-5 py-5" class="min-h-screen bg-cover bg-center bg-no-repeat" style="background-image: url('<?= ROOT_DIR?>assets/theatre-hall.jpg');">
+<div class="min-w-screen min-h-screen bg-gray-900 flex items-center justify-center px-5 py-5 min-h-screen bg-cover bg-center bg-no-repeat" style="background-image: url('<?= ROOT_DIR?>assets/theatre-hall.jpg');">
   <div class="bg-white text-gray-700 rounded-3xl shadow-xl w-full overflow-hidden" style="max-width:1000px">
 
     <div class="md:flex w-full">
       <!-- Illustration Side -->
-      <div class="hidden md:block w-1/2 bg-[#8B0000] py-10 px-10">
+      <div class="hidden md:block w-1/2 bg-white border-r-2 py-10 px-10 flex justify-center items-center">
+        <div class=" flex justify-center items-center flex-col h-full">
+          <h1 class="font-bold text-3xl text-gray-900 mb-4">Welcome to Our Theatre</h1>
+          <p class="text-gray-600 mb-6 text-center">Join us for an unforgettable experience of live performances and cultural events.</p>
         <!-- SVG Illustration (shortened for brevity) -->
-        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="auto" viewBox="0 0 744.84799 747.07702"></svg>
+        <!-- <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="auto" viewBox="0 0 744.84799 747.07702"></svg> -->
+       </div>
       </div>
 
       <!-- Form Side -->

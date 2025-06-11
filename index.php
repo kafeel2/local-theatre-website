@@ -31,6 +31,7 @@ $routes = [
     'loginController' => 'controller/loginController.php',     // Login controller
     'logout' => 'controller/logoutController.php',             // Logout controller
     'commentsController' => 'controller/commentsController.php', // Comments controller
+    'editBlogController' => 'controller/editBlogController.php', // edit blog controller
 
 
 

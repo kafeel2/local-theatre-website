@@ -4,10 +4,10 @@ include 'components/header.php';
 ?>
 <body class="min-h-screen bg-cover bg-center bg-no-repeat" style="background-image: url('<?= ROOT_DIR?>assets/theatre-hall.jpg');">
   <div class="min-h-screen font-[sans-serif] flex items-center justify-center p-4">
-    <div class="shadow-[0_2px_16px_-3px_rgba(6,81,237,0.3)] max-w-6xl max-md:max-w-lg rounded-3xl p-6 bg-white">
+    <div class="shadow-[0_2px_16px_-3px_rgba(6,81,237,0.3)] max-w-6xl max-md:max-w-lg rounded-3xl bg-white p-0">
      
-      <div class="grid md:grid-cols-2 items-center gap-8 rounded-3xl">
-        <div class="bg-[#8B0000] text-white font-[Cabin_Condensed] text-3xl font-semibold p-6 text-center leading-tight">
+      <div class="grid md:grid-cols-2 items-center rounded-3xl">
+        <div class="bg-[#8B0000] flex justify-center items-center flex-col h-full w-full h-full p-0 text-white font-[Cabin_Condensed] text-3xl font-semibold p-6 text-center leading-tight p-0">
           Experience the<br>Magic of Live<br>Theatre
         </div>
 
@@ -15,7 +15,7 @@ include 'components/header.php';
         <div class="status-message"><?= $_SESSION['status_message'] ?></div>
         <?php unset($_SESSION['status_message']) ?> <?php endif ?>
 
-        <form action="loginController" method="POST" class="md:max-w-md w-full mx-auto">
+        <form action="loginController" method="POST" class="md:max-w-md w-full mx-auto p-12">
         <div class="mb-12 relative flex items-center justify-center gap-16">
             <h3 class="cursor-default text-4xl font-bold text-black">Login</h3>
             <img src="<?= ROOT_DIR?>assets/logo.png" alt="logo" class="w-12 cursor-default">
