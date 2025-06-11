@@ -7,9 +7,9 @@
     b.blog_title,
     b.blog_content
     FROM blogs b
-    where b.blog_id = 12
+    where b.blog_id = ?
     ");
-// $blogs->bind_param("i", $bid);
+$blogs->bind_param("i", $bid);
 $blogs->execute();
 $blogs->store_result();
 $blogs->bind_result($blogTitle, $blogContent);
