@@ -2,7 +2,7 @@
 include 'database/config.php';
 include 'components/header.php';
 ?>
-<body class="min-h-screen bg-cover bg-center bg-no-repeat" style="background-image: url('assets/theatre-hall.jpg');">
+<body class="min-h-screen bg-cover bg-center bg-no-repeat" style="background-image: url('<?= ROOT_DIR?>assets/theatre-hall.jpg');">
   <div class="min-h-screen font-[sans-serif] flex items-center justify-center p-4">
     <div class="shadow-[0_2px_16px_-3px_rgba(6,81,237,0.3)] max-w-6xl max-md:max-w-lg rounded-3xl p-6 bg-white">
      
@@ -18,13 +18,13 @@ include 'components/header.php';
         <form action="loginController" method="POST" class="md:max-w-md w-full mx-auto">
         <div class="mb-12 relative flex items-center justify-center gap-16">
             <h3 class="cursor-default text-4xl font-bold text-black">Login</h3>
-            <img src="/theatre/assets/logo.png" alt="logo" class="w-12 cursor-default">
+            <img src="<?= ROOT_DIR?>assets/logo.png" alt="logo" class="w-12 cursor-default">
         </div>
 
 
           <div>
             <div class="relative flex items-center">
-             <input name="email" type="email" required class="px-4 py-3 text-slate-900 bg-[#ffe5e5] w-full text-sm outline-none border-b-2 border-transparent focus:border-blue-500 rounded-3xl"  placeholder="Enter Email"/>
+             <input name="email" type="email" required class="px-4 py-3 text-slate-900 bg-[#ffe5e5] w-full text-sm outline-none border-b-2 border-transparent rounded-3xl"  placeholder="Enter Email"/>
               <!-- SVG omitted for brevity -->
             </div>
           </div>
