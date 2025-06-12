@@ -25,6 +25,6 @@ if ($reject->execute()) {
 $reject->close();
 
 // Redirect back to comments page
-header("Location: comments.php");
+header("Location: comments");
 exit();
 ?>

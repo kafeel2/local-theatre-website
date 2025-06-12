@@ -39,7 +39,7 @@ $blogs->bind_result($bid, $blogTitle, $username, $created, $status);
           Manage Blogs
         </a>
 
-        <a href="<?= ROOT_DIR ?>admin/reviews" class="flex items-center px-4 py-2 mt-2 text-white hover:bg-red-900">
+        <a href="<?= ROOT_DIR ?>admin/manage-reviews" class="flex items-center px-4 py-2 mt-2 text-white hover:bg-red-900">
           Manage Reviews
         </a>
 

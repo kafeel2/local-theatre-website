@@ -14,6 +14,7 @@ $routes = [
     'blog-info' => 'pages/blog-info.php', // Blog info page route
     'reviews' => 'pages/reviews.php',      // Reviews page route
     'shows' => 'pages/shows.php',          // Shows page route
+    'shows-info' => 'pages/shows-info.php', // Shows info page route
 
 
     // admin dashboard routes
@@ -23,7 +24,16 @@ $routes = [
     'admin/manage-blogs' => 'pages/admin/manage-blogs.php', // Admin manage blogs route
     'admin/edit-blog' => 'pages/admin/edit-blog.php', // Admin edit blog route
     'admin/delete-blog' => 'pages/admin/delete-blog.php', // Admin delete blog route
-    'admin/users' => 'pages/admin/users.php', // Admin users route
+    'admin/edit-user' => 'pages/admin/edit-user.php', // Admin edit user route
+    'admin/delete-user' => 'pages/admin/delete-user.php', // Admin delete user route
+    'admin/manage-reviews' => 'pages/admin/manage-reviews.php', // Admin reviews route
+    'admin/edit-review' => 'pages/admin/edit-review.php', // Admin edit review route
+    'admin/manage-shows' => 'pages/admin/manage-shows.php', // Admin manage shows route
+    'admin/edit-show' => 'pages/admin/edit-show.php', // Admin edit show route
+    'admin/delete-show' => 'pages/admin/delete-show.php', // Admin delete show route
+    'admin/add-show' => 'pages/admin/add-show.php', // Admin add show route
+
+
 
 
 
@@ -37,6 +47,14 @@ $routes = [
     'admin/approveController' => 'controller/approveController.php', // Approve comment controller
     'admin/rejectController' => 'controller/rejectController.php', // Reject comment controller
     'admin/deleteCommentController' => 'controller/deleteCommentController.php', // Delete comment controller
+    'admin/editUserController' => 'controller/editUserController.php', // Edit user controller
+    'admin/deleteUserController' => 'controller/deleteUserController.php', // Delete user controller
+    'admin/approveReviewController' => 'controller/approveReviewController.php', // Approve review controller
+    'admin/rejectReviewController' => 'controller/rejectReviewController.php', // Reject review controller
+    'admin/deleteReviewController' => 'controller/deleteReviewController.php', // Delete review controller
+    'admin/editShowController' => 'controller/editShowController.php', // Edit show controller
+    'admin/deleteShowController' => 'controller/deleteShowController.php', // Delete show controller
+    'admin/addShowController' => 'controller/addShowController.php', // Add show controller
 
 
 

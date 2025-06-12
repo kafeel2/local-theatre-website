@@ -21,5 +21,8 @@ if ($insertReview->execute()) {
 $insertReview->close();
 
 // Redirect back to the shows page
-header("Location: shows.php");
+header("Location: shows");
 exit();
+
+
+

@@ -17,6 +17,6 @@ if ($approve->execute()) {
 $approve->close();
 
 // Redirect to the comments page in /admin
-header("Location: comments.php");
+header("Location: comments");
 exit();
 ?>

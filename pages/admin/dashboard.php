@@ -41,7 +41,11 @@ $users->bind_result($uid, $username, $email, $role, $created, $total_comments);
           Manage Blogs
         </a>
 
-        <a href="<?= ROOT_DIR ?>admin/reviews" class="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-700">
+        <a href="<?= ROOT_DIR ?>admin/manage-shows" class="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-700">
+          Manage Shows
+        </a>
+
+        <a href="<?= ROOT_DIR ?>admin/manage-reviews" class="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-700">
           Manage Reviews
         </a>
 

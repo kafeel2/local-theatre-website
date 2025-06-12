@@ -18,6 +18,6 @@ if ($delete_comment->execute()) {
 $delete_comment->close();
 
 // Redirect back to the comments page
-header("Location: comments.php");
+header("Location: comments");
 exit();
 ?>
