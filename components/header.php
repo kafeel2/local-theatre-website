@@ -80,6 +80,9 @@ ini_set('display_errors', 1);
       <a href="<?= ROOT_DIR ?>admin/manage-blogs" class="font-medium text-[15px] border-0 outline-0 cursor-pointer text-black-700 hover:underline">
         Manage Blogs
       </a>
+    <a href="<?= ROOT_DIR ?>admin/comments" class="font-medium text-[15px] border-0 outline-0 cursor-pointer text-black-700 hover:underline">
+       Manage Comments
+    </a>
     <?php elseif ($_SESSION['role'] === 'user'): ?>
       <a href="<?= ROOT_DIR ?>user/dashboard" class="font-medium text-[15px] border-0 outline-0 cursor-pointer text-black-700 hover:underline">
         Dashboard

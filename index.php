@@ -12,6 +12,7 @@ $routes = [
     'login' => 'pages/login.php',     // Login page route
     'blog' => 'pages/blog.php',          // Blog page route
     'blog-info' => 'pages/blog-info.php', // Blog info page route
+    'reviews' => 'pages/reviews.php',      // Reviews page route
     'shows' => 'pages/shows.php',          // Shows page route
 
 
@@ -32,6 +33,10 @@ $routes = [
     'logout' => 'controller/logoutController.php',             // Logout controller
     'commentsController' => 'controller/commentsController.php', // Comments controller
     'admin/editBlogController' => 'controller/editBlogController.php', // edit blog controller
+    'admin/deleteBlogController' => 'controller/deleteBlogController.php', // delete blog controller
+    'admin/approveController' => 'controller/approveController.php', // Approve comment controller
+    'admin/rejectController' => 'controller/rejectController.php', // Reject comment controller
+    'admin/deleteCommentController' => 'controller/deleteCommentController.php', // Delete comment controller
 
 
 
