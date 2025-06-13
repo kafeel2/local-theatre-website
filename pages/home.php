@@ -76,7 +76,7 @@ $shows->bind_result($sid, $showName, $dateShown, $showType, $imageUrl);
               <h3 class="text-xl font-semibold text-gray-800"><?= $blog_title ?></h3>
               <p class="text-gray-600 mt-2"><?= $blog_content ?></p>
               <div class="mt-4">
-                <a href="blog-info?id=<?php echo $blog_id; ?>" class="mt-4 inline-block px-4 py-2 rounded tracking-wider bg-purple-600 hover:bg-purple-700 text-white text-[13px]">Read More</a>
+                <a href="blog-info?id=<?php echo $blog_id; ?>" class="mt-4 inline-block px-4 py-2 rounded tracking-wider border-red-800 bg-red-800 text-white text-[13px]">Read More</a>
               </div>
             </div>
           </div>
@@ -98,7 +98,7 @@ $shows->bind_result($sid, $showName, $dateShown, $showType, $imageUrl);
                 <h3 class="text-xl font-semibold text-gray-800"><?= $showName ?></h3>
                 <p class="text-gray-600 mt-2"><?= $showType ?></p>
                 <div class="mt-4">
-                <a href="shows-info?id=<?= $sid ?>" class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 inline-block">View Show</a>
+                <a href="shows-info?id=<?= $sid ?>" class="px-4 py-2 bg-red-600 text-white rounded hover:border-red-800 bg-red-800 inline-block">View Show</a>
                 </div>
               </div>
             </div>
