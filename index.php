@@ -2,6 +2,10 @@
 // Get the requested URL from the 'url' query parameter
 $url = isset($_GET['url']) ? rtrim($_GET['url'], '/') : '';
 
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
+
 // Define available routes (URL => corresponding PHP file)
 $routes = [
     '' => 'pages/home.php',          // Home route
@@ -49,8 +53,8 @@ $routes = [
     'admin/deleteCommentController' => 'controller/deleteCommentController.php', // Delete comment controller
     'admin/editUserController' => 'controller/editUserController.php', // Edit user controller
     'admin/deleteUserController' => 'controller/deleteUserController.php', // Delete user controller
-    'admin/approveReviewController' => 'controller/approveReviewController.php', // Approve review controller
-    'admin/reviewsController' => 'controller/reviewsController.php', // Reviews controller
+    'admin/approveReviewController' => 'controller/approveReviewsController.php', // Approve review controller
+    'reviewsController' => 'controller/reviewsController.php', // Reviews controller
     'admin/rejectReviewController' => 'controller/rejectReviewController.php', // Reject review controller
     'admin/deleteReviewController' => 'controller/deleteReviewController.php', // Delete review controller
     'admin/editShowController' => 'controller/editShowController.php', // Edit show controller
@@ -58,6 +62,7 @@ $routes = [
     'admin/addShowController' => 'controller/addShowController.php', // Add show controller
     'admin/editReviewController' => 'controller/editReviewController.php', // Edit review controller
     'admin/deleteReviewController' => 'controller/deleteReviewController.php', // Delete review controller
+
     
     
 

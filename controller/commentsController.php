@@ -4,6 +4,7 @@ session_start();
 
 $blogId = $_GET['bid'];
 $userId = $_GET['uid'];
+echo $userId;
 
 $insertComment = $conn->prepare("INSERT INTO comments (comment_text, blog_id, user_id) VALUES (?, ?, ?)");
 

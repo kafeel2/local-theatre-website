@@ -14,5 +14,5 @@ if ($approve->execute()) {
 }
 
 $approve->close();
-header("Location: reviews");
+header("Location: manage-reviews");
 exit();

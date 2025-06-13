@@ -3,9 +3,8 @@ include 'database/config.php';
 include 'components/header.php';
 
 $showId = $_GET['id'];
-echo $showId;
+$user_id = $_SESSION['user_id'] ?? 0;
 
-// Fetch show data (replace blogs with shows)
 $show = $conn->prepare("SELECT
   s.show_name,
   s.date_shown,
@@ -14,9 +13,9 @@ $show = $conn->prepare("SELECT
   u.username,
   u.user_id
 FROM shows s
-JOIN users u ON u.user_id = u.user_id  -- Dummy join for compatibility; update if shows are linked to creators
-WHERE s.show_id = $showId");
-
+JOIN users u ON u.user_id = u.user_id
+WHERE s.show_id = ?");
+$show->bind_param("i", $showId);
 $show->execute();
 $show->store_result();
 $show->bind_result($show_name, $date_shown, $show_type, $image_url, $username, $user_id);
@@ -62,6 +61,38 @@ $show->fetch();
         <?php else : ?>
           <p class="mt-6 text-gray-600">Please sign in to leave a review.</p>
         <?php endif ?>
+
+        <!-- Approved Reviews Section -->
+        <div class="mt-10">
+          <h2 class="text-2xl font-semibold text-gray-700 dark:text-white mb-4">Reviews</h2>
+          <?php
+          $approvedReviews = $conn->prepare("SELECT r.review_text, r.created_at, u.username
+              FROM reviews r
+              INNER JOIN users u ON r.user_id = u.user_id
+              WHERE r.show_id = ? AND r.status = 'approved'
+              ORDER BY r.created_at DESC");
+          $approvedReviews->bind_param("i", $showId);
+          $approvedReviews->execute();
+          $approvedReviews->store_result();
+          $approvedReviews->bind_result($review_text, $created_at, $review_user);
+          ?>
+
+          <?php if ($approvedReviews->num_rows > 0): ?>
+            <?php while ($approvedReviews->fetch()): ?>
+              <div class="mb-6 p-4 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-sm">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="font-medium text-gray-900 dark:text-white"><?= htmlspecialchars($review_user) ?></span>
+                  <span class="text-xs text-gray-500 dark:text-gray-400"><?= date("F j, Y, g:i a", strtotime($created_at)) ?></span>
+                </div>
+                <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed"><?= htmlspecialchars($review_text) ?></p>
+              </div>
+            <?php endwhile; ?>
+          <?php else: ?>
+            <p class="text-gray-500 dark:text-gray-400">No reviews yet. Be the first to leave one!</p>
+          <?php endif; ?>
+        </div>
+        <!-- End Approved Reviews Section -->
+
       </div>
     </div>
   </div>

@@ -31,7 +31,7 @@ include 'components/header.php';
 
           <div class="mt-8">
             <div class="relative flex items-center">
-              <input name="password" type="password" required class="px-4 py-3 text-slate-900 bg-[#ffe5e5] w-full text-sm outline-none border-b-2 border-transparent focus:border-blue-500 rounded-3xl" placeholder="Enter password" />
+              <input name="password" type="password" required class="px-4 py-3 text-slate-900 bg-[#ffe5e5] w-full text-sm outline-none border-b-2 border-transparent rounded-3xl" placeholder="Enter password" />
               <!-- SVG omitted for brevity -->
             </div>
           </div>

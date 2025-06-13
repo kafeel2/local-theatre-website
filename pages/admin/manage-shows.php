@@ -112,7 +112,7 @@ $shows->bind_result($sid, $showName, $dateShown, $showType);
       document.getElementById('modal').classList.remove('hidden');
       document.getElementById('modal_show_id').textContent = showId;
       document.getElementById('delete_button').onclick = function () {
-        window.location.href = `delete-show?sid=${encodeURIComponent(showId)}`;
+        window.location.href = `deleteShowController?sid=${encodeURIComponent(showId)}`;
       };
     });
   });

@@ -3,29 +3,32 @@ include 'components/header.php';
 include 'database/config.php';
 
 $userId = $_SESSION['user_id'] ?? 0;
+echo $userId;
 
 // Fetch user comments on blogs
 $comments = $conn->prepare("SELECT 
   c.comment_id, 
   c.comment_text, 
   c.comment_created, 
-  b.blog_title
+  b.blog_title,
+  b.status
 FROM comments c
 JOIN blogs b ON c.blog_id = b.blog_id
-WHERE c.user_id = ? AND c.status = 'approved'
+WHERE c.user_id = ? 
 ORDER BY c.comment_created DESC");
 
 $comments->bind_param("i", $userId);
 $comments->execute();
 $comments->store_result();
-$comments->bind_result($cid, $commentText, $created, $blogTitle);
+$comments->bind_result($cid, $commentText, $created, $blogTitle, $status);
 
 // Fetch user reviews on shows
 $reviews = $conn->prepare("SELECT 
   r.review_id, 
   r.review_text, 
   r.created_at, 
-  s.show_name
+  s.show_name,
+  r.status
 FROM reviews r
 JOIN shows s ON r.show_id = s.show_id
 WHERE r.user_id = ?
@@ -33,7 +36,7 @@ ORDER BY r.created_at DESC");
 $reviews->bind_param("i", $userId);
 $reviews->execute();
 $reviews->store_result();
-$reviews->bind_result($rid, $reviewText, $reviewDate, $showName);
+$reviews->bind_result($rid, $reviewText, $reviewDate, $showName, $status);
 ?>
 
 
@@ -62,7 +65,7 @@ $reviews->bind_result($rid, $reviewText, $reviewDate, $showName);
           <th class="p-4 text-left text-sm font-semibold text-slate-900">Blog Title</th>
           <th class="p-4 text-left text-sm font-semibold text-slate-900">Comment</th>
           <th class="p-4 text-left text-sm font-semibold text-slate-900">Date</th>
-          <th class="p-4 text-left text-sm font-semibold text-slate-900">Actions</th>
+          <th class="p-4 text-left text-sm font-semibold text-slate-900">Status</th>
         </tr>
       </thead>
       <tbody class="whitespace-nowrap">
@@ -71,8 +74,7 @@ $reviews->bind_result($rid, $reviewText, $reviewDate, $showName);
             <td class="p-4"><?= htmlspecialchars($blogTitle) ?></td>
             <td class="p-4"><?= htmlspecialchars($commentText) ?></td>
             <td class="p-4"><?= htmlspecialchars($created) ?></td>
-            <td class="p-4">
-              <a href="edit-comment?cid=<?= $cid ?>" class="text-blue-600 hover:underline">Edit</a>
+            <td class="p-4"><?= htmlspecialchars($status) ?>
             </td>
           </tr>
         <?php endwhile ?>
@@ -87,7 +89,7 @@ $reviews->bind_result($rid, $reviewText, $reviewDate, $showName);
           <th class="p-4 text-left text-sm font-semibold text-slate-900">Show</th>
           <th class="p-4 text-left text-sm font-semibold text-slate-900">Review</th>
           <th class="p-4 text-left text-sm font-semibold text-slate-900">Date</th>
-          <th class="p-4 text-left text-sm font-semibold text-slate-900">Actions</th>
+          <th class="p-4 text-left text-sm font-semibold text-slate-900">Status</th>
         </tr>
       </thead>
       <tbody class="whitespace-nowrap">
@@ -96,8 +98,7 @@ $reviews->bind_result($rid, $reviewText, $reviewDate, $showName);
             <td class="p-4"><?= htmlspecialchars($showName) ?></td>
             <td class="p-4"><?= htmlspecialchars($reviewText) ?></td>
             <td class="p-4"><?= htmlspecialchars($reviewDate) ?></td>
-            <td class="p-4">
-              <a href="edit-review?rid=<?= $rid ?>" class="text-blue-600 hover:underline">Edit</a>
+            <td class="p-4"><?= htmlspecialchars($status) ?>
             </td>
           </tr>
         <?php endwhile ?>

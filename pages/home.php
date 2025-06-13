@@ -2,6 +2,37 @@
 include 'database/config.php';
 include 'components/header.php';
 
+$blog = $conn->prepare("SELECT 
+    blog_id, 
+    blog_title, 
+    blog_content,
+    blog_author,
+    image_url, 
+    blog_created
+    from blogs
+    LIMIT 3
+    ");
+$blog->execute();
+$blog->store_result();
+$blog->bind_result($blog_id, $blog_title, $blog_content, $blog_author, $image_url, $blog_created);
+
+// show info
+$shows = $conn->prepare("SELECT
+    s.show_id,
+    s.show_name,
+    s.date_shown,
+    s.show_type,
+    s.image_url
+  FROM shows s
+  ORDER BY s.date_shown
+  LIMIT 3
+  ");
+
+
+$shows->execute();
+$shows->store_result();
+$shows->bind_result($sid, $showName, $dateShown, $showType, $imageUrl);
+
 ?>
 <div>
 <div class="relative min-h-[560px]">
@@ -34,89 +65,50 @@ include 'components/header.php';
 
 
 <section id="menu" class="py-16 bg-white">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Our Menu</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Pizza 1 -->
-                <div class="bg-gray-50 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition duration-300">
-                    <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Margherita Pizza" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-800">Margherita</h3>
-                        <p class="text-gray-600 mt-2">Classic pizza with tomato sauce, mozzarella, and basil.</p>
-                        <div class="mt-4 flex justify-between items-center">
-                            <span class="text-primary font-bold text-lg">$12.99</span>
-                            <button class="bg-primary text-white px-4 py-2 rounded hover:bg-secondary transition duration-300">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Pizza 2 -->
-                <div class="bg-gray-50 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition duration-300">
-                    <img src="https://images.unsplash.com/photo-1552539618-7eec9b4d1796?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Pepperoni Pizza" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-800">Pepperoni</h3>
-                        <p class="text-gray-600 mt-2">Tomato sauce, mozzarella, and lots of pepperoni.</p>
-                        <div class="mt-4 flex justify-between items-center">
-                            <span class="text-primary font-bold text-lg">$14.99</span>
-                            <button class="bg-primary text-white px-4 py-2 rounded hover:bg-secondary transition duration-300">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Pizza 3 -->
-                <div class="bg-gray-50 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition duration-300">
-                    <img src="https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Vegetarian Pizza" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-800">Vegetarian</h3>
-                        <p class="text-gray-600 mt-2">Tomato sauce, mozzarella, bell peppers, mushrooms, and olives.</p>
-                        <div class="mt-4 flex justify-between items-center">
-                            <span class="text-primary font-bold text-lg">$13.99</span>
-                            <button class="bg-primary text-white px-4 py-2 rounded hover:bg-secondary transition duration-300">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Pizza 4 -->
-                <div class="bg-gray-50 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition duration-300">
-                    <img src="https://images.unsplash.com/photo-1620374645498-af6bd681a0bd?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Hawaiian Pizza" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-800">Hawaiian</h3>
-                        <p class="text-gray-600 mt-2">Tomato sauce, mozzarella, ham, and pineapple.</p>
-                        <div class="mt-4 flex justify-between items-center">
-                            <span class="text-primary font-bold text-lg">$15.99</span>
-                            <button class="bg-primary text-white px-4 py-2 rounded hover:bg-secondary transition duration-300">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Pizza 5 -->
-                <div class="bg-gray-50 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition duration-300">
-                    <img src="https://images.unsplash.com/photo-1593504049359-74330189a345?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="BBQ Chicken Pizza" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-800">BBQ Chicken</h3>
-                        <p class="text-gray-600 mt-2">BBQ sauce, mozzarella, chicken, red onions, and cilantro.</p>
-                        <div class="mt-4 flex justify-between items-center">
-                            <span class="text-primary font-bold text-lg">$16.99</span>
-                            <button class="bg-primary text-white px-4 py-2 rounded hover:bg-secondary transition duration-300">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Pizza 6 -->
-                <div class="bg-gray-50 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition duration-300">
-                    <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Meat Lovers Pizza" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-800">Meat Lovers</h3>
-                        <p class="text-gray-600 mt-2">Tomato sauce, mozzarella, pepperoni, sausage, bacon, and ham.</p>
-                        <div class="mt-4 flex justify-between items-center">
-                            <span class="text-primary font-bold text-lg">$17.99</span>
-                            <button class="bg-primary text-white px-4 py-2 rounded hover:bg-secondary transition duration-300">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
+    <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Latest Blog</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Victorian Show -->
+          <?php while($blog->fetch()): ?>
+          <div class="bg-gray-50 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition duration-300">
+            <img src="<?= ROOT_DIR ?>assets/<?php echo htmlspecialchars($image_url); ?>" alt="<?php echo htmlspecialchars($blog_title); ?>" class="w-full h-52 object-cover" />
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-gray-800"><?= $blog_title ?></h3>
+              <p class="text-gray-600 mt-2"><?= $blog_content ?></p>
+              <div class="mt-4">
+                <a href="blog-info?id=<?php echo $blog_id; ?>" class="mt-4 inline-block px-4 py-2 rounded tracking-wider bg-purple-600 hover:bg-purple-700 text-white text-[13px]">Read More</a>
+              </div>
             </div>
+          </div>
+          <?php endwhile; ?>  
         </div>
-    </section>
+      </div> 
+  </section>
+
+  <!-- shows -->
+  <section id="menu" class="py-16 bg-white">
+    <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Current Shows</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Victorian Show -->
+            <?php while($shows->fetch()): ?>
+            <div class="bg-gray-50 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition duration-300">
+              <img src="<?= ROOT_DIR ?>assets/<?php echo htmlspecialchars($imageUrl); ?>" alt="<?php echo htmlspecialchars($showName); ?>" class="w-full h-52 object-cover" />
+              <div class="p-6">
+                <h3 class="text-xl font-semibold text-gray-800"><?= $showName ?></h3>
+                <p class="text-gray-600 mt-2"><?= $showType ?></p>
+                <div class="mt-4">
+                <a href="shows-info?id=<?= $sid ?>" class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 inline-block">View Show</a>
+                </div>
+              </div>
+            </div>
+            <?php endwhile; ?>  
+        </div>
+      </div> 
+  </section>
+
+
+
 
       <hr class="my-6" />
       <p class='text-center mb-6'>© 2023<a href='https://readymadeui.com/' target='_blank'

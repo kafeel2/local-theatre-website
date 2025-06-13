@@ -14,5 +14,5 @@ if ($delete->execute()) {
 }
 
 $delete->close();
-header("Location: reviews");
+header("Location: manage-reviews");
 exit();
