@@ -7,18 +7,19 @@ echo $showId;
 
 // Fetch show data (replace blogs with shows)
 $show = $conn->prepare("SELECT
-s.show_name,
-s.date_shown,
-s.show_type,
-u.username,
-u.user_id
+  s.show_name,
+  s.date_shown,
+  s.show_type,
+  s.image_url,
+  u.username,
+  u.user_id
 FROM shows s
 JOIN users u ON u.user_id = u.user_id  -- Dummy join for compatibility; update if shows are linked to creators
 WHERE s.show_id = $showId");
 
 $show->execute();
 $show->store_result();
-$show->bind_result($show_name, $date_shown, $show_type, $username, $user_id);
+$show->bind_result($show_name, $date_shown, $show_type, $image_url, $username, $user_id);
 $show->fetch();
 ?>
 
@@ -28,7 +29,7 @@ $show->fetch();
     <h1 class="text-3xl font-semibold text-gray-800 capitalize lg:text-4xl dark:text-white">Now Showing</h1>
 
     <div class="mt-8 lg:-mx-6 lg:flex lg:items-center">
-      <img src="<?= ROOT_DIR ?>assets/theatre-hall.jpg" alt="<?= htmlspecialchars($show_name) ?>" class="object-cover" />
+      <img src="<?= ROOT_DIR ?>assets/<?php echo htmlspecialchars($image_url); ?>" alt="<?= htmlspecialchars($show_name); ?>" class="object-cover" />
       <div class="mt-6 lg:w-1/2 lg:mt-0 lg:mx-6">
         <a href="#" class="block mt-4 text-2xl font-semibold text-gray-800 hover:underline dark:text-white md:text-3xl">
           <?= htmlspecialchars($show_name) ?>
@@ -46,7 +47,7 @@ $show->fetch();
 
         <?php if (isset($_SESSION['user_id'])) : ?>
           <div class="mt-20">
-            <form id="reviewForm" action="reviewController?sid=<?= $showId ?>&uid=<?= $_SESSION['user_id'] ?>" method="post">
+            <form id="reviewForm" action="reviewsController?sid=<?= $showId ?>&uid=<?= $_SESSION['user_id'] ?>" method="post">
               <label for="review_text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Review <?= htmlspecialchars($show_name) ?></label>
               <textarea id="review_text" name="review_text" rows="4"
                 class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-red-500 focus:border-red-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"

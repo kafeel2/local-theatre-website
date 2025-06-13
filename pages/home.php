@@ -3,8 +3,8 @@ include 'database/config.php';
 include 'components/header.php';
 
 ?>
-
-    <div class="relative min-h-[560px]">
+<div>
+<div class="relative min-h-[560px]">
   <!-- Full-width background image -->
   <img src="assets/theatre-hall.jpg" alt="Banner" class="absolute inset-0 w-full h-full object-cover z-0" />
 
@@ -122,6 +122,7 @@ include 'components/header.php';
       <p class='text-center mb-6'>© 2023<a href='https://readymadeui.com/' target='_blank'
           class="hover:underline mx-1">ReadymadeUI</a>All Rights Reserved.</p>
     </footer>
+
 
   <script>
     var toggleOpen = document.getElementById('toggleOpen');

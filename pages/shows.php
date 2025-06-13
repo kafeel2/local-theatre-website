@@ -6,13 +6,16 @@ $shows = $conn->prepare("SELECT
     s.show_id,
     s.show_name,
     s.date_shown,
-    s.show_type
+    s.show_type,
+    s.image_url
   FROM shows s
   ORDER BY s.date_shown");
 
+
 $shows->execute();
 $shows->store_result();
-$shows->bind_result($sid, $showName, $dateShown, $showType);
+$shows->bind_result($sid, $showName, $dateShown, $showType, $imageUrl);
+
 ?>
 
 <div class="py-8 px-4 max-w-6xl mx-auto">
@@ -31,7 +34,7 @@ $shows->bind_result($sid, $showName, $dateShown, $showType);
   <div class="space-y-6">
     <?php while ($shows->fetch()) : ?>
       <div class="flex flex-col sm:flex-row bg-white rounded shadow hover:shadow-lg transition overflow-hidden">
-        <img src="<?= ROOT_DIR ?>assets/default.jpg" alt="<?= htmlspecialchars($showName) ?>" class="w-full sm:w-1/3 h-48 object-cover">
+        <img src="<?= ROOT_DIR ?>assets/<?php echo htmlspecialchars($imageUrl); ?>" alt="<?php echo htmlspecialchars($showName); ?>" class="w-full sm:w-1/3 h-48 object-cover">
         <div class="p-4 flex-1 flex flex-col justify-between">
           <div>
             <h2 class="text-2xl font-semibold mb-2">
