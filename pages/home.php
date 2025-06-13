@@ -110,10 +110,10 @@ $shows->bind_result($sid, $showName, $dateShown, $showType, $imageUrl);
 
 
 
-      <hr class="my-6" />
-      <p class='text-center mb-6'>© 2023<a href='https://readymadeui.com/' target='_blank'
-          class="hover:underline mx-1">ReadymadeUI</a>All Rights Reserved.</p>
-    </footer>
+      <!-- <hr class="my-6" /> -->
+      <!-- <p class='text-center mb-6'>© 2023<a href='https://readymadeui.com/' target='_blank' -->
+          <!-- class="hover:underline mx-1">ReadymadeUI</a>All Rights Reserved.</p> -->
+    <!-- </footer> -->
 
 
   <script>
